@@ -10,7 +10,7 @@ Warning: this plugin is still in an early stage of development. APIs may change.
 ## Usage
 
 ```go
-import "github.com/profects/gormetrics"
+import "github.com/luyan-lyyy/gormetrics"
 
 err := gormetrics.Register(db, <database name>)
 if err != nil {
@@ -46,6 +46,10 @@ It also export the following metrics (gauge vectors):
 * `gormetrics_connections_idle`
 * `gormetrics_connections_in_use`
 * `gormetrics_connections_open`
+* `gormetrics_connections_max_open`
+* `gormetrics_connections_wait_for`
+* `gormetrics_connections_blocked_seconds`
+* `gormetrics_connections_closed_max_lifetime`
 
 These all have the following labels:
 * `database`: the name of the database
