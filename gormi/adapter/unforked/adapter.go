@@ -17,7 +17,7 @@ package unforked
 import (
 	"database/sql"
 
-	"github.com/profects/gormetrics/gormi"
+	"github.com/luyan-lyyy/gormetrics/gormi"
 
 	"github.com/jinzhu/gorm"
 )

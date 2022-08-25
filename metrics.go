@@ -23,13 +23,21 @@ const (
 	metricStatusFail    = "fail"
 	metricStatusSuccess = "success"
 
-	metricOpenConnections  = "connections_open"
-	metricIdleConnections  = "connections_idle"
-	metricInUseConnections = "connections_in_use"
+	metricOpenConnections              = "connections_open"
+	metricIdleConnections              = "connections_idle"
+	metricInUseConnections             = "connections_in_use"
+	metricMaxOpenConnections           = "connections_max_open"
+	metricWaitedForConnections         = "connections_wait_for"
+	metricBlockedSecondsConnections    = "connections_blocked_seconds"
+	metricClosedMaxLifetimeConnections = "connections_closed_max_lifetime"
 
-	helpOpenConnections  = `Currently open connections to the database`
-	helpIdleConnections  = `Currently idle connections to the database`
-	helpInUseConnections = `Currently in use connections`
+	helpOpenConnections              = `Currently open connections to the database`
+	helpIdleConnections              = `Currently idle connections to the database`
+	helpInUseConnections             = `Currently in use connections`
+	helpMaxOpenConnections           = `Currently Maximum number of open connections to the database`
+	helpWaitedForConnections         = `Currently waited for connections to the database`
+	helpBlockedSecondsConnections    = `The total time blocked waiting for a new connection`
+	helpClosedMaxLifetimeConnections = `The total number of connections closed due to SetConnMaxLifetime`
 
 	metricAllTotal     = "all_total"
 	metricCreatesTotal = "creates_total"

@@ -85,9 +85,13 @@ func newQueryCounters(namespace string) (*queryCounters, error) {
 }
 
 type databaseGauges struct {
-	idle  *prometheus.GaugeVec
-	inUse *prometheus.GaugeVec
-	open  *prometheus.GaugeVec
+	idle              *prometheus.GaugeVec
+	inUse             *prometheus.GaugeVec
+	open              *prometheus.GaugeVec
+	maxOpen           *prometheus.GaugeVec
+	waitedFor         *prometheus.GaugeVec
+	blockedSeconds    *prometheus.GaugeVec
+	closedMaxLifetime *prometheus.GaugeVec
 }
 
 func newDatabaseGauges(namespace string) (*databaseGauges, error) {
@@ -107,15 +111,23 @@ func newDatabaseGauges(namespace string) (*databaseGauges, error) {
 	}
 
 	dg := databaseGauges{
-		idle:  vecCreator.new(metricIdleConnections, helpIdleConnections),
-		inUse: vecCreator.new(metricInUseConnections, helpInUseConnections),
-		open:  vecCreator.new(metricOpenConnections, helpOpenConnections),
+		idle:              vecCreator.new(metricIdleConnections, helpIdleConnections),
+		inUse:             vecCreator.new(metricInUseConnections, helpInUseConnections),
+		open:              vecCreator.new(metricOpenConnections, helpOpenConnections),
+		maxOpen:           vecCreator.new(metricMaxOpenConnections, helpMaxOpenConnections),
+		waitedFor:         vecCreator.new(metricWaitedForConnections, helpWaitedForConnections),
+		blockedSeconds:    vecCreator.new(metricBlockedSecondsConnections, helpBlockedSecondsConnections),
+		closedMaxLifetime: vecCreator.new(metricClosedMaxLifetimeConnections, helpClosedMaxLifetimeConnections),
 	}
 
 	if err := registerCollectors(
 		dg.idle,
 		dg.inUse,
 		dg.open,
+		dg.maxOpen,
+		dg.waitedFor,
+		dg.blockedSeconds,
+		dg.closedMaxLifetime,
 	); err != nil {
 		return nil, err
 	}

@@ -64,6 +64,23 @@ func (d *database) collectConnectionStats(counters *databaseGauges) {
 	counters.open.
 		With(defaultLabels).
 		Set(float64(stats.OpenConnections))
+
+	counters.maxOpen.
+		With(defaultLabels).
+		Set(float64(stats.MaxOpenConnections))
+
+	counters.waitedFor.
+		With(defaultLabels).
+		Set(float64(stats.WaitCount))
+
+	counters.blockedSeconds.
+		With(defaultLabels).
+		Set(stats.WaitDuration.Seconds())
+
+	counters.closedMaxLifetime.
+		With(defaultLabels).
+		Set(float64(stats.MaxLifetimeClosed))
+
 }
 
 // databaseMetrics is a convenience struct for exporting database metrics to Prometheus.

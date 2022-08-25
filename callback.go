@@ -17,8 +17,8 @@ package gormetrics
 import (
 	"fmt"
 
+	"github.com/luyan-lyyy/gormetrics/gormi"
 	"github.com/pkg/errors"
-	"github.com/profects/gormetrics/gormi"
 
 	"github.com/prometheus/client_golang/prometheus"
 )
