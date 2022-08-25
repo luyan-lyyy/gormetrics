@@ -77,6 +77,10 @@ func (d *database) collectConnectionStats(counters *databaseGauges) {
 		With(defaultLabels).
 		Set(stats.WaitDuration.Seconds())
 
+	counters.closedMaxIdle.
+		With(defaultLabels).
+		Set(float64(stats.MaxIdleClosed))
+
 	counters.closedMaxLifetime.
 		With(defaultLabels).
 		Set(float64(stats.MaxLifetimeClosed))

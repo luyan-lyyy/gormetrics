@@ -91,6 +91,7 @@ type databaseGauges struct {
 	maxOpen           *prometheus.GaugeVec
 	waitedFor         *prometheus.GaugeVec
 	blockedSeconds    *prometheus.GaugeVec
+	closedMaxIdle     *prometheus.GaugeVec
 	closedMaxLifetime *prometheus.GaugeVec
 }
 
@@ -117,6 +118,7 @@ func newDatabaseGauges(namespace string) (*databaseGauges, error) {
 		maxOpen:           vecCreator.new(metricMaxOpenConnections, helpMaxOpenConnections),
 		waitedFor:         vecCreator.new(metricWaitedForConnections, helpWaitedForConnections),
 		blockedSeconds:    vecCreator.new(metricBlockedSecondsConnections, helpBlockedSecondsConnections),
+		closedMaxIdle:     vecCreator.new(metricClosedMaxIdleConnections, helpClosedMaxIdleConnections),
 		closedMaxLifetime: vecCreator.new(metricClosedMaxLifetimeConnections, helpClosedMaxLifetimeConnections),
 	}
 
@@ -127,6 +129,7 @@ func newDatabaseGauges(namespace string) (*databaseGauges, error) {
 		dg.maxOpen,
 		dg.waitedFor,
 		dg.blockedSeconds,
+		dg.closedMaxIdle,
 		dg.closedMaxLifetime,
 	); err != nil {
 		return nil, err

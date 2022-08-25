@@ -49,6 +49,7 @@ It also export the following metrics (gauge vectors):
 * `gormetrics_connections_max_open`
 * `gormetrics_connections_wait_for`
 * `gormetrics_connections_blocked_seconds`
+* `gormetrics_connections_closed_max_idle`
 * `gormetrics_connections_closed_max_lifetime`
 
 These all have the following labels:

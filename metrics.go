@@ -29,6 +29,7 @@ const (
 	metricMaxOpenConnections           = "connections_max_open"
 	metricWaitedForConnections         = "connections_wait_for"
 	metricBlockedSecondsConnections    = "connections_blocked_seconds"
+	metricClosedMaxIdleConnections     = "connections_closed_max_idle"
 	metricClosedMaxLifetimeConnections = "connections_closed_max_lifetime"
 
 	helpOpenConnections              = `Currently open connections to the database`
@@ -37,6 +38,7 @@ const (
 	helpMaxOpenConnections           = `Currently Maximum number of open connections to the database`
 	helpWaitedForConnections         = `Currently waited for connections to the database`
 	helpBlockedSecondsConnections    = `The total time blocked waiting for a new connection`
+	helpClosedMaxIdleConnections     = `The total number of connections closed due to SetMaxIdleConns`
 	helpClosedMaxLifetimeConnections = `The total number of connections closed due to SetConnMaxLifetime`
 
 	metricAllTotal     = "all_total"
